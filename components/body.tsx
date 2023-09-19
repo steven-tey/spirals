@@ -35,8 +35,25 @@ export default function Body({
         className="mt-6 animate-fade-up [text-wrap:balance] text-center text-gray-500 opacity-0 md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        Generate beautiful AI spiral art with one click. Powered by Vercel and
-        Replicate.
+        Generate beautiful AI spiral art with one click. Powered by{" "}
+        <a
+          className="text-black hover:underline underline-offset-4"
+          href="https://vercel.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Vercel
+        </a>{" "}
+        and{" "}
+        <a
+          className="text-black hover:underline underline-offset-4"
+          href="https://replicate.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Replicate
+        </a>
+        .
       </p>
       <Suspense>
         <Form
