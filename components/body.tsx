@@ -3,6 +3,7 @@ import { Twitter } from "@/components/icons";
 import PhotoBooth from "@/components/photo-booth";
 // @ts-ignore
 import promptmaker from "promptmaker";
+import { Suspense } from "react";
 
 export default function Body({
   prompt,
@@ -37,12 +38,15 @@ export default function Body({
         Generate beautiful AI spiral art with one click. Powered by Vercel and
         Replicate.
       </p>
-      <Form
-        promptValue={prompt}
-        placeholderPrompt={prompt ? "" : promptmaker()}
-      />
-      {/* Glacier: https://xd2kcvzsdpeyx1gu.public.blob.vercel-storage.com/WtIReq2-O4vy1seGuJ7qCYne82U0QDxbbugFXW.png */}
-      <PhotoBooth image={image} />
+      <Suspense>
+        <Form
+          promptValue={prompt}
+          placeholderPrompt={prompt ? "" : promptmaker()}
+        />
+      </Suspense>
+      <Suspense>
+        <PhotoBooth image={image} />
+      </Suspense>
     </div>
   );
 }
