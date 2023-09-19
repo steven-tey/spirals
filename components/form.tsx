@@ -8,6 +8,7 @@ import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { LoadingCircle } from "./icons";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import va from "@vercel/analytics";
 
 export default function Form({
   promptValue,
@@ -30,6 +31,9 @@ export default function Form({
       )}
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       action={(data) => {
+        va.track("generate prompt", {
+          prompt: prompt,
+        });
         generate(data).then((id) => {
           router.push(`/t/${id}`);
         });

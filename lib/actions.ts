@@ -14,7 +14,7 @@ export async function generate(form: FormData) {
 
   const id = nanoid();
 
-  await Promise.all([
+  const response = await Promise.all([
     kv.hset(id, {
       prompt,
     }),
