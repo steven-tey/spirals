@@ -3,7 +3,6 @@ import { Twitter } from "@/components/icons";
 import PhotoBooth from "@/components/photo-booth";
 // @ts-ignore
 import promptmaker from "promptmaker";
-import { Suspense } from "react";
 
 export default function Body({
   prompt,
@@ -55,15 +54,11 @@ export default function Body({
         </a>
         .
       </p>
-      <Suspense>
-        <Form
-          promptValue={prompt}
-          placeholderPrompt={prompt ? "" : promptmaker()}
-        />
-      </Suspense>
-      <Suspense>
-        <PhotoBooth image={image} />
-      </Suspense>
+      <Form
+        promptValue={prompt}
+        placeholderPrompt={prompt ? "" : promptmaker()}
+      />
+      <PhotoBooth image={image} />
     </div>
   );
 }
