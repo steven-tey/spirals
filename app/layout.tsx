@@ -84,25 +84,15 @@ export default function RootLayout({
         </main>
         <div className="absolute w-full py-5 text-center">
           <p className="text-gray-500">
-            Powered by{" "}
+            A project by{" "}
             <a
               className="font-semibold text-gray-600 transition-colors hover:text-black"
-              href="https://vercel.com"
+              href="https://twitter.com/steventey"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Vercel
-            </a>{" "}
-            and{" "}
-            <a
-              className="font-semibold text-gray-600 transition-colors hover:text-black"
-              href="https://replicate.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Replicate
+              Steven Tey
             </a>
-            .
           </p>
         </div>
         <Analytics />
