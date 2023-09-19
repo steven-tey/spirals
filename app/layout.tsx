@@ -53,7 +53,7 @@ export default function RootLayout({
             </Link>
             <div className="flex items-center space-x-4">
               <a
-                href="https://vercel.com/templates/next.js/extrapolate"
+                href="https://vercel.com/templates/next.js/spirals"
                 target="_blank"
                 rel="noopener noreferrer"
               >
