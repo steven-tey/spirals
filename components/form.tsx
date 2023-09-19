@@ -2,8 +2,8 @@
 
 import { generate } from "@/lib/actions";
 import useEnterSubmit from "@/lib/hooks/use-enter-submit";
-import { Pencil, SendHorizonal } from "lucide-react";
-import { useRef, useState } from "react";
+import { SendHorizonal } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { LoadingCircle } from "./icons";
 import { cn } from "@/lib/utils";
@@ -18,17 +18,20 @@ export default function Form({
   placeholderPrompt: string;
 }) {
   const router = useRouter();
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [prompt, setPrompt] = useState(promptValue || "");
-  const [readOnly, setReadOnly] = useState(promptValue ? true : false);
   const { formRef, onKeyDown } = useEnterSubmit();
+
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  useEffect(() => {
+    if (promptValue && textareaRef.current) {
+      textareaRef.current.select();
+    }
+  }, [promptValue]);
+
   return (
     <form
       ref={formRef}
-      className={cn(
-        "rounded-lg bg-white p-4 mt-6 animate-fade-up opacity-0 border border-gray-200 shadow-md w-full max-w-xl mx-auto flex space-x-2 items-center",
-        readOnly && "bg-gray-50"
-      )}
+      className="rounded-lg bg-white p-4 mt-6 animate-fade-up opacity-0 border border-gray-200 shadow-md w-full max-w-xl mx-auto flex space-x-2 items-center"
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       action={(data) => {
         va.track("generate prompt", {
@@ -45,7 +48,6 @@ export default function Form({
         ref={textareaRef}
         value={prompt}
         autoFocus
-        readOnly={readOnly}
         placeholder={placeholderPrompt}
         onChange={(e) => setPrompt(e.currentTarget.value)}
         onKeyDown={(e) => {
@@ -55,24 +57,9 @@ export default function Form({
           }
           onKeyDown(e);
         }}
-        className={cn(
-          "flex-1 outline-none resize-none",
-          readOnly && "text-gray-600 bg-gray-50"
-        )}
+        className="flex-1 outline-none resize-none"
       />
-      {readOnly ? (
-        <button
-          className="rounded-lg group p-2 hover:bg-gray-100 active:bg-gray-200 transition-all"
-          onClick={() => {
-            setReadOnly(false);
-            textareaRef.current?.select();
-          }}
-        >
-          <Pencil className="h-4 w-4 text-gray-400 group-hover:text-gray-600" />
-        </button>
-      ) : (
-        <SubmitButton />
-      )}
+      <SubmitButton />
     </form>
   );
 }
