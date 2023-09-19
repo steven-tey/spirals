@@ -36,11 +36,7 @@ export default async function DynamicOG({
           tw="absolute flex bottom-[48px] flex items-center basis-full lg:basis-auto"
           style={{ gap: 28 }}
         >
-          <div
-            tw={`bg-gray-200 border-4 border-black px-[52px] lowercase break-all rounded-lg text-[36px] flex items-center justify-start w-[800px] ${
-              data.prompt.length > 50 ? "h-[150px]" : "h-[100px]"
-            }`}
-          >
+          <div tw="bg-gray-200 border-4 border-black px-[52px] lowercase break-all rounded-lg text-[36px] flex items-center justify-start w-[800px] h-[150px]">
             {data.prompt.substring(0, 72)}
             {data.prompt.length > 72 && "..."}
           </div>
