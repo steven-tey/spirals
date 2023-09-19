@@ -37,15 +37,10 @@ export default function Body({
         Generate beautiful AI spiral art with one click. Powered by Vercel and
         Replicate.
       </p>
-      <div
-        className="mt-6 animate-fade-up opacity-0"
-        style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
-      >
-        <Form
-          promptValue={prompt}
-          placeholderPrompt={prompt ? "" : promptmaker()}
-        />
-      </div>
+      <Form
+        promptValue={prompt}
+        placeholderPrompt={prompt ? "" : promptmaker()}
+      />
       {/* Glacier: https://xd2kcvzsdpeyx1gu.public.blob.vercel-storage.com/WtIReq2-O4vy1seGuJ7qCYne82U0QDxbbugFXW.png */}
       <PhotoBooth image={image} />
     </div>

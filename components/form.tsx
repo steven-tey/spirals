@@ -25,9 +25,10 @@ export default function Form({
     <form
       ref={formRef}
       className={cn(
-        "rounded-lg bg-white p-4 border border-gray-200 shadow-md w-full max-w-xl mx-auto flex space-x-2 items-center",
+        "rounded-lg bg-white p-4 mt-6 animate-fade-up opacity-0 border border-gray-200 shadow-md w-full max-w-xl mx-auto flex space-x-2 items-center",
         readOnly && "bg-gray-50"
       )}
+      style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       action={(data) => {
         generate(data).then((id) => {
           router.push(`/t/${id}`);
