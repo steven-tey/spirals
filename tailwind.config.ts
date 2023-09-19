@@ -1,20 +1,65 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        display: ["var(--font-clash)"],
+        default: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      animation: {
+        // Modal
+        "scale-in": "scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+        "fade-in": "fade-in 0.3s ease-out forwards",
+        // Fade up and down
+        "fade-up": "fade-up 0.5s",
+        "fade-down": "fade-down 0.5s",
+      },
+      keyframes: {
+        // Modal
+        "scale-in": {
+          "0%": { transform: "scale(0.95)" },
+          "100%": { transform: "scale(1)" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        // Fade up and down
+        "fade-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)",
+          },
+          "80%": {
+            opacity: "0.6",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0px)",
+          },
+        },
+        "fade-down": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "80%": {
+            opacity: "0.6",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0px)",
+          },
+        },
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
