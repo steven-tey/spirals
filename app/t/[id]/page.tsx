@@ -17,10 +17,21 @@ export async function generateMetadata({
 
   const title = `Spirals: ${data.prompt}`;
   const description = `A spiral generated from the prompt: ${data.prompt}`;
+  const image = data.image || "https://spirals.vercel.app/opengraph-image.png";
 
   return {
     title,
     description,
+    openGraph: {
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@steventey",
+    },
   };
 }
 
