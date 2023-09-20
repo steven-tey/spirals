@@ -1,6 +1,6 @@
 import { kv } from "@vercel/kv";
 import { notFound } from "next/navigation";
-import Body from "@/components/body";
+import FormRSC from "@/components/form-rsc";
 import { Metadata } from "next";
 
 export async function generateMetadata({
@@ -47,5 +47,5 @@ export default async function Results({
   if (!data) {
     notFound();
   }
-  return <Body prompt={data.prompt} image={data.image || null} />;
+  return <FormRSC prompt={data.prompt} image={data.image || null} />;
 }

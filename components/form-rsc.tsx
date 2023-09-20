@@ -4,7 +4,7 @@ import PhotoBooth from "@/components/photo-booth";
 // @ts-ignore
 import promptmaker from "promptmaker";
 
-export default function Body({
+export default function FormRSC({
   prompt,
   image,
 }: {
