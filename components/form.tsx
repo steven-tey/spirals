@@ -3,22 +3,27 @@
 import { generate } from "@/lib/actions";
 import useEnterSubmit from "@/lib/hooks/use-enter-submit";
 import { SendHorizonal } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { LoadingCircle } from "./icons";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import va from "@vercel/analytics";
+// @ts-ignore
+import promptmaker from "promptmaker";
 
-export default function Form({
-  promptValue,
-  placeholderPrompt,
-}: {
-  promptValue?: string;
-  placeholderPrompt: string;
-}) {
+export default function Form({ promptValue }: { promptValue?: string }) {
   const router = useRouter();
   const [prompt, setPrompt] = useState(promptValue || "");
+  const [placeholderPrompt, setPlaceholderPrompt] = useState("");
+  useEffect(() => {
+    if (promptValue) {
+      setPlaceholderPrompt("");
+    } else {
+      setPlaceholderPrompt(promptmaker());
+    }
+  }, [promptValue]);
+
   const { formRef, onKeyDown } = useEnterSubmit();
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);

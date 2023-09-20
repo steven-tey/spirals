@@ -1,8 +1,6 @@
 import Form from "@/components/form";
 import { Twitter } from "@/components/icons";
 import PhotoBooth from "@/components/photo-booth";
-// @ts-ignore
-import promptmaker from "promptmaker";
 
 export default function FormRSC({
   prompt,
@@ -54,10 +52,7 @@ export default function FormRSC({
         </a>
         .
       </p>
-      <Form
-        promptValue={prompt}
-        placeholderPrompt={prompt ? "" : promptmaker()}
-      />
+      <Form promptValue={prompt} />
       <PhotoBooth image={image} />
     </div>
   );
