@@ -85,14 +85,23 @@ export default function RootLayout({
         </main>
         <div className="absolute w-full py-5 text-center">
           <p className="text-gray-500">
-            A project by{" "}
+            A free project by{" "}
             <a
-              className="font-semibold text-gray-600 transition-colors hover:text-black"
+              className="font-semibold text-gray-600 transition-colors hover:underline underline-offset-4"
               href="https://twitter.com/steventey"
               target="_blank"
               rel="noopener noreferrer"
             >
               Steven Tey
+            </a>{" "}
+            |{" "}
+            <a
+              className="font-semibold bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent hover:underline underline-offset-4 decoration-violet-500"
+              href="https://github.com/sponsors/steven-tey?frequency=one-time"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buy me a coffee
             </a>
           </p>
         </div>
