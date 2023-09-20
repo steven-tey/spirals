@@ -1,6 +1,8 @@
 import Form from "@/components/form";
 import { Twitter } from "@/components/icons";
 import PhotoBooth from "@/components/photo-booth";
+import { CountDisplay, GeneratedCount } from "./generated-count";
+import { Suspense } from "react";
 
 export default function FormRSC({
   prompt,
@@ -53,6 +55,9 @@ export default function FormRSC({
         .
       </p>
       <Form promptValue={prompt} />
+      <Suspense fallback={<CountDisplay />}>
+        <GeneratedCount />
+      </Suspense>
       <PhotoBooth image={image} />
     </div>
   );
