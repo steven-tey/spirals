@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { LoadingCircle } from "@/components/icons";
 import { useParams, useRouter } from "next/navigation";
+import va from "@vercel/analytics";
 
 function forceDownload(blobUrl: string, filename: string) {
   let a: any = document.createElement("a");
@@ -48,6 +49,10 @@ export default function PhotoBooth({
         <button
           onClick={() => {
             setDownloading(true);
+            va.track("download image", {
+              image,
+              page: `https://spirals.vercel.app/t/${id}`,
+            });
             fetch(image, {
               headers: new Headers({
                 Origin: location.origin,
