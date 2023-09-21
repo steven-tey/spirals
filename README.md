@@ -33,7 +33,7 @@ https://github.com/steven-tey/spirals/assets/28986134/eaaed0f3-6dad-4de6-9e0f-15
 ## Tech Stack
 
 - Next.js [App Router](https://nextjs.org/docs/app)
-- Next.js [Server Actions](https://bun.sh/)
+- Next.js [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations/)
 - [Bun](https://bun.sh/) for compilation
 - [Vercel Blob](https://vercel.com/storage/blob) for image storage
 - [Vercel KV](https://vercel.com/storage/kv) for redis
