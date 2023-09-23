@@ -11,8 +11,18 @@ import { useRouter } from "next/navigation";
 import va from "@vercel/analytics";
 // @ts-ignore
 import promptmaker from "promptmaker";
+import Image from "next/image";
+import { toast } from "sonner";
+import Tooltip from "./tooltip";
+import { DEFAULT_PATTERN } from "@/lib/constants";
 
-export default function Form({ promptValue }: { promptValue?: string }) {
+export default function Form({
+  promptValue,
+  patternValue,
+}: {
+  promptValue?: string;
+  patternValue?: string;
+}) {
   const router = useRouter();
   const [prompt, setPrompt] = useState(promptValue || "");
   const [placeholderPrompt, setPlaceholderPrompt] = useState("");
@@ -33,6 +43,28 @@ export default function Form({ promptValue }: { promptValue?: string }) {
     }
   }, [promptValue]);
 
+  const [pattern, setPattern] = useState(patternValue || DEFAULT_PATTERN);
+
+  const handleUpload = (file: File | null) => {
+    if (file) {
+      if (file.size / 1024 / 1024 > 50) {
+        toast.error("File size too big (max 50MB)");
+      } else if (
+        !file.type.includes("png") &&
+        !file.type.includes("jpg") &&
+        !file.type.includes("jpeg")
+      ) {
+        toast.error("Invalid file type (must be .png, .jpg, or .svg)");
+      } else {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setPattern(e.target?.result as string);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  };
+
   return (
     <form
       ref={formRef}
@@ -47,6 +79,49 @@ export default function Form({ promptValue }: { promptValue?: string }) {
         });
       }}
     >
+      <input className="hidden" name="patternUrl" value={pattern} readOnly />
+      <Tooltip
+        content={
+          <div className="max-w-xs p-4 text-center text-sm text-gray-700 flex flex-col items-center justify-center space-y-4">
+            <Image
+              src="/logo.png"
+              alt="Default Pattern"
+              width={200}
+              height={200}
+              className="h-40 w-40"
+            />
+            <p>
+              You can upload a custom pattern. <br /> For optimal results, we
+              recommend a square image with a white background and a black
+              foreground.
+            </p>
+          </div>
+        }
+      >
+        <label
+          htmlFor="patternFile"
+          className="cursor-pointer rounded-md p-2 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+        >
+          <Image
+            src={pattern}
+            alt="Pattern"
+            width={50}
+            height={50}
+            className="h-5 w-5"
+          />
+        </label>
+      </Tooltip>
+      <input
+        id="patternFile"
+        name="patternFile"
+        type="file"
+        accept="image/*"
+        className="sr-only"
+        onChange={(e) => {
+          const file = e.currentTarget.files && e.currentTarget.files[0];
+          handleUpload(file);
+        }}
+      />
       <textarea
         id="prompt"
         name="prompt"

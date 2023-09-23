@@ -6,9 +6,11 @@ import { Suspense } from "react";
 
 export default function FormRSC({
   prompt,
+  pattern,
   image,
 }: {
   prompt?: string;
+  pattern?: string;
   image: string | null;
 }) {
   return (
@@ -54,7 +56,7 @@ export default function FormRSC({
         </a>
         .
       </p>
-      <Form promptValue={prompt} />
+      <Form promptValue={prompt} patternValue={pattern} />
       <Suspense fallback={<CountDisplay />}>
         <GeneratedCount />
       </Suspense>

@@ -42,10 +42,20 @@ export default async function Results({
     id: string;
   };
 }) {
-  const data = await kv.hgetall<{ prompt: string; image?: string }>(params.id);
+  const data = await kv.hgetall<{
+    prompt: string;
+    pattern?: string;
+    image?: string;
+  }>(params.id);
   console.log(data);
   if (!data) {
     notFound();
   }
-  return <FormRSC prompt={data.prompt} image={data.image || null} />;
+  return (
+    <FormRSC
+      prompt={data.prompt}
+      {...(data?.pattern && { pattern: data.pattern })}
+      image={data.image || null}
+    />
+  );
 }

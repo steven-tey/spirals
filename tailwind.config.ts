@@ -19,6 +19,8 @@ const config: Config = {
         // Fade up and down
         "fade-up": "fade-up 0.5s",
         "fade-down": "fade-down 0.5s",
+        // Tooltip
+        "slide-up-fade": "slide-up-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
       },
       keyframes: {
         // Modal
@@ -56,6 +58,11 @@ const config: Config = {
             opacity: "1",
             transform: "translateY(0px)",
           },
+        },
+        // Tooltip
+        "slide-up-fade": {
+          "0%": { opacity: "0", transform: "translateY(2px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
     },
