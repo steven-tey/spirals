@@ -11,7 +11,7 @@
     "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\""
   },
   "dependencies": {
-    "@radix-ui/react-tooltip": "^1.0.6",
+    "@radix-ui/react-popover": "^1.0.6",
     "@types/node": "20.6.2",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",

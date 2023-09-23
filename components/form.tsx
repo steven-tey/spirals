@@ -3,7 +3,7 @@
 import { generate } from "@/lib/actions";
 import useEnterSubmit from "@/lib/hooks/use-enter-submit";
 import { SendHorizonal } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { LoadingCircle } from "./icons";
 import { cn } from "@/lib/utils";
@@ -12,9 +12,10 @@ import va from "@vercel/analytics";
 // @ts-ignore
 import promptmaker from "promptmaker";
 import Image from "next/image";
-import { toast } from "sonner";
-import Tooltip from "./tooltip";
+import Popover from "./popover";
 import { DEFAULT_PATTERN } from "@/lib/constants";
+import PatternPicker from "./pattern-picker";
+import { toast } from "sonner";
 
 export default function Form({
   promptValue,
@@ -44,21 +45,20 @@ export default function Form({
   }, [promptValue]);
 
   const [pattern, setPattern] = useState(patternValue || DEFAULT_PATTERN);
+  const [openPopover, setOpenPopover] = useState(false);
 
-  const handleUpload = (file: File | null) => {
+  const onChangePicture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
     if (file) {
-      if (file.size / 1024 / 1024 > 50) {
-        toast.error("File size too big (max 50MB)");
-      } else if (
-        !file.type.includes("png") &&
-        !file.type.includes("jpg") &&
-        !file.type.includes("jpeg")
-      ) {
-        toast.error("Invalid file type (must be .png, .jpg, or .svg)");
+      if (file.size / 1024 / 1024 > 5) {
+        toast.error("File size too big (max 5MB)");
+      } else if (file.type !== "image/png" && file.type !== "image/jpeg") {
+        toast.error("File type not supported (.png or .jpg only)");
       } else {
         const reader = new FileReader();
         reader.onload = (e) => {
           setPattern(e.target?.result as string);
+          setOpenPopover(false);
         };
         reader.readAsDataURL(file);
       }
@@ -80,25 +80,19 @@ export default function Form({
       }}
     >
       <input className="hidden" name="patternUrl" value={pattern} readOnly />
-      <Tooltip
+      <Popover
         content={
-          <div className="flex max-w-xs flex-col items-center justify-center space-y-4 p-4 text-center text-sm text-gray-700">
-            <Image
-              src="/logo.png"
-              alt="Default Pattern"
-              width={200}
-              height={200}
-              className="h-40 w-40"
-            />
-            <p>
-              You can upload a custom pattern. <br /> For optimal results, we
-              recommend a square image + black and white color scheme.
-            </p>
-          </div>
+          <PatternPicker
+            setPattern={setPattern}
+            setOpenPopover={setOpenPopover}
+          />
         }
+        openPopover={openPopover}
+        setOpenPopover={setOpenPopover}
       >
-        <label
-          htmlFor="patternFile"
+        <button
+          type="button"
+          onClick={() => setOpenPopover((prev) => !prev)}
           className="cursor-pointer rounded-md p-1 transition-colors hover:bg-gray-100 active:bg-gray-200 sm:p-2"
         >
           <Image
@@ -108,18 +102,15 @@ export default function Form({
             height={50}
             className="h-4 w-4 sm:h-5 sm:w-5"
           />
-        </label>
-      </Tooltip>
+        </button>
+      </Popover>
       <input
         id="patternFile"
         name="patternFile"
         type="file"
         accept="image/*"
         className="sr-only"
-        onChange={(e) => {
-          const file = e.currentTarget.files && e.currentTarget.files[0];
-          handleUpload(file);
-        }}
+        onChange={onChangePicture}
       />
       <textarea
         id="prompt"

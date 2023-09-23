@@ -47,7 +47,7 @@ export default async function Results({
     pattern?: string;
     image?: string;
   }>(params.id);
-  console.log(data);
+
   if (!data) {
     notFound();
   }
