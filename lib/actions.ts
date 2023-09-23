@@ -38,7 +38,7 @@ export async function generate(form: FormData) {
         controlnet_conditioning_scale: 1,
         qrcode_background: "white",
       },
-      webhook: `${WEBHOOK_URL}?id=${id}`,
+      webhook: `${WEBHOOK_URL}?id=${id}&secret=${process.env.REPLICATE_WEBHOOK_SECRET}`,
       webhook_events_filter: ["completed"],
     }),
   ]);
