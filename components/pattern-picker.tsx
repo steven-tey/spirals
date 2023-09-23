@@ -5,9 +5,9 @@ import { toast } from "sonner";
 
 const patterns = [
   "https://xd2kcvzsdpeyx1gu.public.blob.vercel-storage.com/8uiaWqu-77Maq6Zn38dfz9iWwXsyaheFfOSJPL.png",
+  "https://xd2kcvzsdpeyx1gu.public.blob.vercel-storage.com/vercel-RaEAI0uDphGrSl0a7lCcNhdKO7dNKT.png",
   "https://xd2kcvzsdpeyx1gu.public.blob.vercel-storage.com/react-58b3JHEzb6qWG20KYl944yW7V72CGo.png",
   "https://xd2kcvzsdpeyx1gu.public.blob.vercel-storage.com/logo-wfAh7QadApCiJ1tu7EVOsILwGBQ1wz.png",
-  "https://xd2kcvzsdpeyx1gu.public.blob.vercel-storage.com/worlds-N6kfxEEpu7Io4yFAGfrg7Y8evatxJz.png",
 ];
 
 export default function PatternPicker({
