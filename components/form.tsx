@@ -92,8 +92,7 @@ export default function Form({
             />
             <p>
               You can upload a custom pattern. <br /> For optimal results, we
-              recommend a square image with a white background and a black
-              foreground.
+              recommend a square image + black and white color scheme.
             </p>
           </div>
         }
