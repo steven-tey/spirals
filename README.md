@@ -28,7 +28,7 @@
 
 Spirals is an AI app for you to generate beautiful spiral art with one click. Powered by Vercel and Replicate.
 
-https://github.com/steven-tey/spirals/assets/28986134/eaaed0f3-6dad-4de6-9e0f-151eed9b4846
+https://github.com/steven-tey/spirals/assets/28986134/9f0202d4-2a31-47a0-b43f-bdcd189743ef
 
 ## Tech Stack
 
