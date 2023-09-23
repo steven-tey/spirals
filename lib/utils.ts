@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 // 7-character random string
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-  7
+  7,
 );
 
 export function nFormatter(num: number, digits?: number) {

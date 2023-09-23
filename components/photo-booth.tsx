@@ -42,7 +42,7 @@ export default function PhotoBooth({
 
   return (
     <div
-      className="animate-fade-up opacity-0 group max-w-xl relative mx-auto mt-6 aspect-square w-full overflow-hidden rounded-2xl border border-gray-200"
+      className="group relative mx-auto mt-6 aspect-square w-full max-w-xl animate-fade-up overflow-hidden rounded-2xl border border-gray-200 opacity-0"
       style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
     >
       {id && image && !failed && (
@@ -87,7 +87,7 @@ export default function PhotoBooth({
           <LoadingCircle />
           {id && (
             <div
-              className="my-4 flex flex-col items-center space-y-4 animate-fade-up opacity-0"
+              className="my-4 flex animate-fade-up flex-col items-center space-y-4 opacity-0"
               style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
             >
               <p className="text-sm text-gray-500">

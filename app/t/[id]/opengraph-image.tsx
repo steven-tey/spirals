@@ -14,7 +14,7 @@ export default async function DynamicOG({
 
   const [inter] = await Promise.all([
     fetch(
-      "https://github.com/rsms/inter/raw/master/docs/font-files/Inter-Regular.woff"
+      "https://github.com/rsms/inter/raw/master/docs/font-files/Inter-Regular.woff",
     ).then((res) => res.arrayBuffer()),
   ]);
 
@@ -101,6 +101,6 @@ export default async function DynamicOG({
       headers: {
         "cache-control": "public, max-age=60, stale-while-revalidate=86400",
       },
-    }
+    },
   );
 }

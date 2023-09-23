@@ -68,7 +68,7 @@ export default function Form({
   return (
     <form
       ref={formRef}
-      className="rounded-lg bg-white p-4 mt-6 animate-fade-up opacity-0 border border-gray-200 shadow-md w-full max-w-xl mx-auto flex space-x-2 items-center"
+      className="mx-auto mt-6 flex w-full max-w-xl animate-fade-up items-center space-x-2 rounded-lg border border-gray-200 bg-white px-1 py-2 opacity-0 shadow-md sm:px-2 sm:py-4"
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       action={(data) => {
         va.track("generate prompt", {
@@ -82,7 +82,7 @@ export default function Form({
       <input className="hidden" name="patternUrl" value={pattern} readOnly />
       <Tooltip
         content={
-          <div className="max-w-xs p-4 text-center text-sm text-gray-700 flex flex-col items-center justify-center space-y-4">
+          <div className="flex max-w-xs flex-col items-center justify-center space-y-4 p-4 text-center text-sm text-gray-700">
             <Image
               src="/logo.png"
               alt="Default Pattern"
@@ -100,14 +100,14 @@ export default function Form({
       >
         <label
           htmlFor="patternFile"
-          className="cursor-pointer rounded-md p-2 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+          className="cursor-pointer rounded-md p-1 transition-colors hover:bg-gray-100 active:bg-gray-200 sm:p-2"
         >
           <Image
             src={pattern}
             alt="Pattern"
             width={50}
             height={50}
-            className="h-5 w-5"
+            className="h-4 w-4 sm:h-5 sm:w-5"
           />
         </label>
       </Tooltip>
@@ -128,6 +128,7 @@ export default function Form({
         ref={textareaRef}
         value={prompt}
         autoFocus
+        autoComplete="off"
         placeholder={placeholderPrompt}
         onChange={(e) => setPrompt(e.currentTarget.value)}
         onKeyDown={(e) => {
@@ -137,7 +138,7 @@ export default function Form({
           }
           onKeyDown(e);
         }}
-        className="flex-1 outline-none resize-none"
+        className="flex-1 resize-none outline-none"
       />
       <SubmitButton />
     </form>
@@ -150,10 +151,10 @@ const SubmitButton = () => {
   return (
     <button
       className={cn(
-        "rounded-lg group p-2",
+        "group rounded-lg p-2.5",
         pending
           ? "cursor-disabled bg-gray-100"
-          : "hover:bg-gray-100 active:bg-gray-200 transition-all"
+          : "transition-all hover:bg-gray-100 active:bg-gray-200",
       )}
       disabled={pending}
     >

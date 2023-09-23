@@ -5,10 +5,9 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Github } from "@/components/icons";
+import { Github, BuyMeACoffee } from "@/components/icons";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
-import BuyMeACoffee from "@/components/icons/buymeacoffee";
 
 const clash = localFont({
   src: "../styles/ClashDisplay-Semibold.otf",
@@ -61,7 +60,7 @@ export default function RootLayout({
                 href="https://vercel.com/templates/next.js/spirals"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group hidden sm:flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-3 py-1.5 text-sm text-white transition-colors hover:bg-white hover:text-black"
+                className="group hidden max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-3 py-1.5 text-sm text-white transition-colors hover:bg-white hover:text-black sm:flex"
               >
                 <svg
                   className="h-4 w-4 group-hover:text-black"
@@ -113,7 +112,7 @@ export default function RootLayout({
           <p className="text-gray-500">
             A project by{" "}
             <a
-              className="font-semibold text-gray-600 transition-colors hover:underline underline-offset-4"
+              className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
               href="https://twitter.com/steventey"
               target="_blank"
               rel="noopener noreferrer"
@@ -125,9 +124,9 @@ export default function RootLayout({
             href="https://www.buymeacoffee.com/steventey"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg flex space-x-2 items-center justify-center px-6 mt-2 py-2 border hover:scale-105 transition-all duration-75 border-gray-200 bg-white max-w-fit mx-auto"
+            className="mx-auto mt-2 flex max-w-fit items-center justify-center space-x-2 rounded-lg border border-gray-200 bg-white px-6 py-2 transition-all duration-75 hover:scale-105"
           >
-            <BuyMeACoffee className="w-6 h-6" />
+            <BuyMeACoffee className="h-6 w-6" />
             <p className="font-medium text-gray-600">Buy me a coffee</p>
           </a>
         </div>

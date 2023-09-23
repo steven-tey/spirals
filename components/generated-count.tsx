@@ -9,7 +9,7 @@ export async function GeneratedCount() {
 export const CountDisplay = ({ count }: { count?: number }) => {
   return (
     <p
-      className="animate-fade-up opacity-0 mt-4 text-center text-sm text-gray-500"
+      className="mt-4 animate-fade-up text-center text-sm text-gray-500 opacity-0"
       style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
     >
       {count ? nFormatter(count) : "..."} photos generated and counting!
