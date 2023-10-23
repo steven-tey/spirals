@@ -42,6 +42,7 @@ export default function PatternPicker({
                 width={400}
                 height={400}
                 className="object-cover"
+                unoptimized
               />
             </button>
           ))}
