@@ -52,7 +52,8 @@ export default function RootLayout({
                 width="30"
                 height="30"
                 className="mr-2 rounded-sm"
-              ></Image>
+                unoptimized
+              />
               <p>Spirals</p>
             </Link>
             <div className="flex items-center space-x-4">
