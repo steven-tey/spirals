@@ -101,6 +101,7 @@ export default function Form({
             width={50}
             height={50}
             className="h-4 w-4 sm:h-5 sm:w-5"
+            unoptimized
           />
         </button>
       </Popover>
