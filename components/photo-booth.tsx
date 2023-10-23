@@ -113,6 +113,7 @@ export default function PhotoBooth({ image }: { image: string | null }) {
           width={1280}
           height={1280}
           className="h-full object-cover"
+          unoptimized
         />
       ) : (
         <div className="z-10 flex h-full w-full flex-col items-center bg-white pt-[140px] sm:pt-[280px]">
